@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "paths": {
+    "/upload": {
+      "name": "/upload",
+      "lambdaFunction": "uploadFileFunctionFinal",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update"
+        ]
+      }
+    }
+  }
+}
