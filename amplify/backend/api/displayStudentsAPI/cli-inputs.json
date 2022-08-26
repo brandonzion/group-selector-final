@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "paths": {
+    "/display": {
+      "name": "/display",
+      "lambdaFunction": "displayStudentsFunction",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "read"
+        ],
+        "guest": [
+          "read"
+        ]
+      }
+    }
+  }
+}

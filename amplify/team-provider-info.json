@@ -14,12 +14,17 @@
     },
     "categories": {
       "auth": {
-        "groupselectorfinal07ac2be8": {}
+        "groupselectorfinal07ac2be8": {},
+        "true": {}
       },
       "function": {
         "uploadFileFunctionFinal": {
           "deploymentBucketName": "amplify-groupselectorfinal-dev-110258-deployment",
           "s3Key": "amplify-builds/uploadFileFunctionFinal-5746557a377a36444f52-build.zip"
+        },
+        "displayStudentsFunction": {
+          "deploymentBucketName": "amplify-groupselectorfinal-dev-110258-deployment",
+          "s3Key": "amplify-builds/displayStudentsFunction-37415379486653566d4e-build.zip"
         }
       }
     }
