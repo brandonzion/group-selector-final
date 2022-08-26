@@ -22,19 +22,20 @@ function App({ signOut, user }) {
   
       var rows = csv.split('\n');
       var raw = {}
+      raw['studentNames'] = []
 
       const user = await Auth.currentAuthenticatedUser()
       const username = user.username
   
       for (var i = 0; i < rows.length; i++) {
         var cols = rows[i].split(',');
-        raw[i.toString()] = {firstName: cols[0], lastName:cols[1]}
+        raw['studentNames'].push({firstName: cols[0], lastName:cols[1]})
       }
       console.log(raw)
       raw['username'] = username
       const token = user.signInUserSession.idToken.jwtToken
       console.log(token)
-      console.log({raw})
+      console.log(raw)
       const requestData = {
         headers: {
           Authorization: token,

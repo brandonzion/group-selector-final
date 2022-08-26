@@ -27,11 +27,14 @@ const Compute = () => {
         const user = await Auth.currentAuthenticatedUser()
         const token = user.signInUserSession.idToken.jwtToken
         const requestData = {
+            headers: {
+                Authorization: token,
+            },
             body:{"studentNames":combined, "numGroups":2}
         }
         console.log(requestData)
         const data = await API.post("generateGroupsAPI", "/generate", requestData);
-        console.log(data)
+        console.log(data["solution"])
     }
 
     (async function () {
