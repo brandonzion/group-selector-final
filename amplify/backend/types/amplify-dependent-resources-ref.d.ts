@@ -22,12 +22,6 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
-        },
-        "generateGroupsFunction": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
         }
     },
     "api": {
@@ -37,11 +31,6 @@ export type AmplifyDependentResourcesAttributes = {
             "ApiId": "string"
         },
         "displayStudentsAPI": {
-            "RootUrl": "string",
-            "ApiName": "string",
-            "ApiId": "string"
-        },
-        "generateGroupsAPI": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

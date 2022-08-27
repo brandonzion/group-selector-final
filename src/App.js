@@ -1,18 +1,26 @@
 import './App.css';
-import React from "react";
-import { Amplify, Auth, API } from 'aws-amplify';
+import React, { Component } from 'react';
+import { Amplify, Auth, API, sectionFooterSecondaryContent } from 'aws-amplify';
 import { Link, Outlet } from 'react-router-dom';
 import { useState } from 'react';
+import { TextField } from '@aws-amplify/ui-react';
+import { Grid, View, useTheme, FileUpload, Card, Button } from '@aws-amplify/ui-react';
+import { 
+  NewUpload 
+} from './ui-components';
 
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
+import AccountPage from './AccountPage'
 
 import awsExports from './aws-exports';
 Amplify.configure(awsExports);
 
-function App({ signOut, user }) {
+class App extends Component{
+  
+  const { tokens } = useTheme();
   const [fileData, setFileData] = useState();
-
+  var actionPage = "bruh"
   const uploadFile = async () => {
     var reader = new FileReader();
     reader.readAsText(fileData);
@@ -49,14 +57,58 @@ function App({ signOut, user }) {
   }
   
 
-  
   return (
     <div>
       <h1>Hello {user.username}</h1>
+      <Grid
+        templateColumns="1fr 4fr"
+        templateRows="20rem 30rem 20rem"
+        gap={tokens.space.small}
+      >
+        <View rowSpan={2} backgroundColor={tokens.colors.orange[20]}>
+          <Grid
+            templateColumns="1fr"
+            templateRows="5rem 5rem 5rem"
+            gap={tokens.space.small}
+          >
+            SideBar
+            <View backgroundColor={tokens.colors.orange[40]}>
+              {/* Account Button */}
+              <Button
+                isFullWidth='true'
+                height='5rem'
+                fontSize='2rem'
+                loadingText=""
+                onClick={() => alert('hello')}
+                ariaLabel=""
+                >
+                Account
+              </Button>
+              {/* Classes Button */}
+            </View>
+            <View backgroundColor={tokens.colors.orange[40]}>
+              <Button
+                isFullWidth='true'
+                height='5rem'
+                fontSize='2rem'
+                loadingText=""
+                onClick={() => }
+                ariaLabel=""
+                >
+                Classes
+              </Button>
+            </View>
+          </Grid>
+        </View>
+        <View backgroundColor={tokens.colors.orange[40]} id='actionScreen'>
+          { actionPage } 
+        </View>
+        <View backgroundColor={tokens.colors.orange[60]}>Display</View>
+      </Grid>
       <input type='file' accept='.csv' onChange={(e) => setFileData(e.target.files[0])}></input>
       <button onClick={uploadFile}>Submit</button>
       <button onClick={signOut}>Sign Out</button>
-      <Link to="/compute">Compute</Link> |{" "}
+      
       <Outlet />
     </div>
   );
