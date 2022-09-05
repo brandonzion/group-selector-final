@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/create": {
+      "name": "/create",
+      "lambdaFunction": "createClassFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/get": {
+      "name": "/get",
+      "lambdaFunction": "getClassesFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

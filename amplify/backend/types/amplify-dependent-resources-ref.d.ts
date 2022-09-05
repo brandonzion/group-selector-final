@@ -22,6 +22,18 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
+        },
+        "createClassFunction": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "getClassesFunction": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
         }
     },
     "api": {
@@ -31,6 +43,11 @@ export type AmplifyDependentResourcesAttributes = {
             "ApiId": "string"
         },
         "displayStudentsAPI": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        },
+        "classesAPI": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

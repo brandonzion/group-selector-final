@@ -25,6 +25,14 @@
         "displayStudentsFunction": {
           "deploymentBucketName": "amplify-groupselectorfinal-dev-110258-deployment",
           "s3Key": "amplify-builds/displayStudentsFunction-37415379486653566d4e-build.zip"
+        },
+        "createClassFunction": {
+          "deploymentBucketName": "amplify-groupselectorfinal-dev-110258-deployment",
+          "s3Key": "amplify-builds/createClassFunction-6e574a596e6b38494565-build.zip"
+        },
+        "getClassesFunction": {
+          "deploymentBucketName": "amplify-groupselectorfinal-dev-110258-deployment",
+          "s3Key": "amplify-builds/getClassesFunction-4e75504d4f6e67354972-build.zip"
         }
       }
     }

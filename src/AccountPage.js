@@ -1,4 +1,6 @@
 import React from "react";
+import { Auth } from 'aws-amplify';
+
 const Compute = () => {
     function test(){
         alert('hello')
@@ -7,8 +9,9 @@ const Compute = () => {
 
     return (
         <div>
-            <h1>This is a test</h1>
-            <button onClick={test}>Click me</button>
+            <h1>Account Page</h1>
+            <button onClick={()=> Auth.signOut()}>Log Out</button>
+            
         </div>
     );
 };
