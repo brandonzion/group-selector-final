@@ -7,7 +7,6 @@ import { API, Auth } from 'aws-amplify';
 const ClassesPage = () => {
     const [displayPage, setDisplayPage] = useState();
     const [classesButtons, setClassesButtons] = useState();
-    var tempClassesButtons = []
     var  createClassPage = <View>
         <TextField
             placeholder="History"
@@ -66,6 +65,7 @@ const ClassesPage = () => {
 
     async function getClasses() { 
         const user = await Auth.currentAuthenticatedUser()
+        console.log(user)
         const token = user.signInUserSession.idToken.jwtToken
         const username = user.username
         const requestData = {
@@ -86,12 +86,30 @@ const ClassesPage = () => {
         var classesString = ""
         for(var i =0;i<classes.length;i++){
             classesString = classesString + classes[i] + "\n"     
-            tempClassesButtons.push(<h1>Bruh</h1>)       
         }
-        console.log(tempClassesButtons)
         document.getElementById("classesText").innerText = classesString;
     };
+
+    async function editClasses(){
+        var tempClassesButtons = []
+        const response = await getClasses();
+        var classes = response.classes
+        console.log(classes)
+        var classesString = ""
+        for(var i =0;i<classes.length;i++){
+            await tempClassesButtons.push(<Button key={classes[i]} onClick={e => updateClass(e.target.innerText)}>{ classes[i] }</Button>)     
+            console.log(tempClassesButtons)
+        }
+        
+        setClassesButtons(tempClassesButtons)
+    };
+
+    async function updateClass(selectedClass){
+        console.log(selectedClass)
+    };
+
     displayClasses()
+    
 
     return (
         <div>
@@ -111,7 +129,7 @@ const ClassesPage = () => {
                 height='4rem'
                 fontSize='1rem'
                 loadingText=""
-                onClick={() => setClassesButtons(tempClassesButtons)}
+                onClick={editClasses}
                 ariaLabel=""
                 >
                 Edit Classes

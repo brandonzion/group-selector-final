@@ -1,8 +1,8 @@
 import './App.css';
 import React from "react";
 import { Amplify, Auth, API } from 'aws-amplify';
-import { Link, Outlet } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, Outlet, renderMatches } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { TextField } from '@aws-amplify/ui-react';
 import { Grid, View, useTheme, FileUpload, Card, Button } from '@aws-amplify/ui-react';
 import { 
@@ -19,11 +19,13 @@ import StartPage from './StartPage'
 import awsExports from './aws-exports';
 Amplify.configure(awsExports);
 
-function App({ signOut, user }) {
+function App() {
   const { tokens } = useTheme();
   const [fileData, setFileData] = useState();
   const [actionPage, setActionPage] = useState();
-  setActionPage(<StartPage/>)
+  useEffect(() => {
+    setActionPage(<StartPage/>)
+  }, []);
 
   const uploadFile = async () => {
     var reader = new FileReader();
@@ -38,6 +40,7 @@ function App({ signOut, user }) {
 
       const user = await Auth.currentAuthenticatedUser()
       const username = user.username
+      console.log(user)
   
       for (var i = 0; i < rows.length; i++) {
         var cols = rows[i].split(',');
@@ -62,7 +65,7 @@ function App({ signOut, user }) {
 
   return (
     <div>
-      <h1>Hello {user.username}</h1>
+      <h1>Hello</h1>
       <Grid
         templateColumns="1fr 4fr"
         templateRows="40rem"
@@ -119,12 +122,10 @@ function App({ signOut, user }) {
         </View>
       </Grid>
       <input type='file' accept='.csv' onChange={(e) => setFileData(e.target.files[0])}></input>
-      <button onClick={uploadFile}>Submit</button>
-      <button onClick={signOut}>Sign Out</button>
-      
+      <button onClick={uploadFile}>Submit</button>      
       <Outlet />
     </div>
   );
 }
 
-export default withAuthenticator(App);
+export default App;
