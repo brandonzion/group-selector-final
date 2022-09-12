@@ -1,4 +1,4 @@
-import './App.css';
+//import './App.css';
 import React from "react";
 import { Amplify, Auth, API } from 'aws-amplify';
 import { Link, Outlet, renderMatches } from 'react-router-dom';
